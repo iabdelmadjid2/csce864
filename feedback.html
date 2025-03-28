@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback - CodeLinx Systems</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <img src="images/logo.jpeg" alt="CodeLinx Systems Logo">
+        <h1>Feedback</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="index.html#services">Services</a> <!-- Updated link -->
+            <a href="contact.html">Contact</a>
+            <a href="feedback.html">Feedback</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="faq.html">FAQ</a>
+            <a href="blog.html">Blog</a>
+            <a href="careers.html">Careers</a>
+            <a href="team.html">Our Team</a>
+        </nav>
+    </header>
+
+    <!-- Feedback Form Section -->
+    <main>
+        <section id="feedback-form">
+            <h2>We Value Your Feedback</h2>
+            <form id="feedbackForm">
+                <table>
+                    <tr>
+                        <td><label for="name">Name:</label></td>
+                        <td><input type="text" id="name" name="name" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="email">Email:</label></td>
+                        <td><input type="email" id="email" name="email" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="rating">Rating:</label></td>
+                        <td>
+                            <div class="star-rating" id="starRating">
+                                <span class="star" data-value="1">&#9733;</span>
+                                <span class="star" data-value="2">&#9733;</span>
+                                <span class="star" data-value="3">&#9733;</span>
+                                <span class="star" data-value="4">&#9733;</span>
+                                <span class="star" data-value="5">&#9733;</span>
+                            </div>
+                            <input type="hidden" id="rating" name="rating" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="message">Your Feedback:</label></td>
+                        <td>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                            <button type="button" id="emojiPickerButton">😊</button>
+                        </td>
+                    </tr>
+                </table>
+                <button type="submit">Submit Feedback</button>
+            </form>
+            <div id="submissionMessage" style="display: none; padding: 10px; margin-top: 20px; border: 1px solid #ccc; border-radius: 5px;">
+                <p id="submissionText" style="font-size: 16px;"></p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // JavaScript for star rating
+        const stars = document.querySelectorAll('.star');
+        const ratingInput = document.getElementById('rating');
+        stars.forEach((star, index) => {
+            star.addEventListener('click', () => {
+                stars.forEach((s, i) => {
+                    s.classList.toggle('highlighted', i <= index);
+                });
+                ratingInput.value = index + 1;
+            });
+        });
+
+        // JavaScript for emoji picker
+        const emojiPickerButton = document.getElementById('emojiPickerButton');
+        const messageInput = document.getElementById('message');
+        emojiPickerButton.addEventListener('click', () => {
+            const emojiList = ['😊', '😢', '😂', '😡', '👍', '👎', '❤️', '🎉'];
+            const emojiDropdown = document.createElement('div');
+            emojiDropdown.style.position = 'absolute';
+            emojiDropdown.style.border = '1px solid #ccc';
+            emojiDropdown.style.background = '#fff';
+            emojiDropdown.style.padding = '5px';
+            emojiDropdown.style.borderRadius = '5px';
+            emojiDropdown.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.2)';
+            emojiDropdown.style.zIndex = '1000';
+
+            emojiList.forEach(emoji => {
+                const emojiButton = document.createElement('button');
+                emojiButton.textContent = emoji;
+                emojiButton.style.border = 'none';
+                emojiButton.style.background = 'transparent';
+                emojiButton.style.cursor = 'pointer';
+                emojiButton.style.fontSize = '20px';
+                emojiButton.style.margin = '5px';
+                emojiButton.addEventListener('click', () => {
+                    messageInput.value += emoji;
+                    document.body.removeChild(emojiDropdown);
+                });
+                emojiDropdown.appendChild(emojiButton);
+            });
+
+            document.body.appendChild(emojiDropdown);
+            const rect = emojiPickerButton.getBoundingClientRect();
+            emojiDropdown.style.top = `${rect.bottom + window.scrollY}px`;
+            emojiDropdown.style.left = `${rect.left + window.scrollX}px`;
+        });
+
+        // JavaScript for form submission
+        const feedbackForm = document.getElementById('feedbackForm');
+        const submissionMessage = document.getElementById('submissionMessage');
+        const submissionText = document.getElementById('submissionText');
+        feedbackForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // Prevent form from submitting normally
+            const name = document.getElementById('name').value;
+            const rating = ratingInput.value;
+            submissionText.innerHTML = `<strong style="color: green;">Thank you, ${name}!</strong> <span style="color: blue;">You rated us ${rating} stars.</span> <span style="color: gray;">Your feedback has been submitted.</span>`;
+            submissionMessage.style.display = 'block';
+            feedbackForm.reset(); // Reset the form
+            stars.forEach(star => star.classList.remove('highlighted')); // Reset star rating
+        });
+    </script>
+</body>
+</html>

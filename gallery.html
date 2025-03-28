@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - CodeLinx Systems</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Inline CSS for styling */
+        #gallery-categories {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        #gallery-categories button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            background-color: #01515a; /* Updated color to match feedback page */
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #gallery-categories button:hover {
+            background-color: #218838; /* Darker shade for hover effect */
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-grid img:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <img src="images/logo.jpeg" alt="CodeLinx Systems Logo">
+        <h1>Gallery</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="index.html#services">Services</a>
+            <a href="contact.html">Contact</a>
+            <a href="feedback.html">Feedback</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="faq.html">FAQ</a>
+            <a href="blog.html">Blog</a>
+            <a href="careers.html">Careers</a>
+            <a href="team.html">Our Team</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section id="gallery-intro">
+            <h2>Explore Our Work</h2>
+            <p>Take a look at some of the projects and moments that define CodeLinx Systems.</p>
+        </section>
+
+        <!-- Category Selection -->
+        <section id="gallery-categories">
+            <button onclick="filterImages('all')">All</button>
+            <button onclick="filterImages('design')">Design</button>
+            <button onclick="filterImages('cloud')">Cloud Services</button>
+            <button onclick="filterImages('development')">Development</button>
+            <button onclick="filterImages('data')">Data Communication</button>
+        </section>
+
+        <!-- Gallery Images -->
+        <section id="gallery-images">
+            <div class="gallery-grid">
+                <img src="images/design1.jpg" alt="Design Work 1" class="design">
+                <img src="images/design2.jpg" alt="Design Work 2" class="design">
+                <img src="images/cloud1.jpg" alt="Cloud Service 1" class="cloud">
+                <img src="images/cloud2.jpg" alt="Cloud Service 2" class="cloud">
+                <img src="images/development1.jpg" alt="Development Work 1" class="development">
+                <img src="images/development2.jpg" alt="Development Work 2" class="development">
+                <img src="images/data1.jpg" alt="Data Analysis 1" class="data">
+                <img src="images/data2.jpg" alt="Data Analysis 2" class="data">
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 CodeLinx Systems. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        function filterImages(category) {
+            const images = document.querySelectorAll('.gallery-grid img');
+
+            images.forEach(img => {
+                if (category === 'all' || img.classList.contains(category)) {
+                    img.style.display = 'block'; // Show the image
+                } else {
+                    img.style.display = 'none'; // Hide the image
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

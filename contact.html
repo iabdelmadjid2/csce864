@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - CodeLinx Systems</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Inline styles for the white background layout */
+        #contact-form {
+            background: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 50%;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <img src="images/logo.jpeg" alt="CodeLinx Systems Logo">
+        <h1>Contact Us</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="index.html#services">Services</a>
+            <a href="contact.html">Contact</a>
+            <a href="feedback.html">Feedback</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="faq.html">FAQ</a>
+            <a href="blog.html">Blog</a>
+            <a href="careers.html">Careers</a>
+            <a href="team.html">Our Team</a>
+        </nav>
+    </header>
+
+    <!-- Contact Form Section -->
+    <main>
+        <section id="contact-form">
+            <table style="width: 100%; border-collapse: collapse;">
+                <tr>
+                    <td style="text-align: center;">
+                        <h2>Get in Touch</h2>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <form id="contactForm">
+                            <table style="width: 100%; margin: 0 auto;">
+                                <tr>
+                                    <td><label for="name">Name:</label></td>
+                                    <td><input type="text" id="name" name="name" required></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="email">Email:</label></td>
+                                    <td><input type="email" id="email" name="email" required></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="subject">Subject:</label></td>
+                                    <td>
+                                        <select id="subject" name="subject" required>
+                                            <option value="" disabled selected>Select a subject</option>
+                                            <option value="general">General Inquiry</option>
+                                            <option value="support">Support</option>
+                                            <option value="feedback">Feedback</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label for="message">Message:</label></td>
+                                    <td><textarea id="message" name="message" rows="5" required></textarea></td>
+                                </tr>
+                            </table>
+                            <div style="text-align: center; margin-top: 10px;">
+                                <!-- Emoji Picker Button -->
+                                <button type="button" id="emojiPickerButton" style="margin-left: 10px;">😊</button>
+                                <div id="emojiMenu" style="display: none; position: absolute; background: #fff; border: 1px solid #ccc; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+                                    <!-- Faces -->
+                                    <button type="button" class="emojiButton" value="😊">😊</button>
+                                    <button type="button" class="emojiButton" value="😂">😂</button>
+                                    <button type="button" class="emojiButton" value="😢">😢</button>
+                                    <button type="button" class="emojiButton" value="😎">😎</button>
+                                    <button type="button" class="emojiButton" value="😡">😡</button>
+                                    <!-- Hearts -->
+                                    <button type="button" class="emojiButton" value="❤️">❤️</button>
+                                    <button type="button" class="emojiButton" value="💙">💙</button>
+                                    <button type="button" class="emojiButton" value="💚">💚</button>
+                                    <button type="button" class="emojiButton" value="💛">💛</button>
+                                    <button type="button" class="emojiButton" value="💜">💜</button>
+                                    <!-- Check and Cross Icons -->
+                                    <button type="button" class="emojiButton" value="✔️">✔️</button>
+                                    <button type="button" class="emojiButton" value="❌">❌</button>
+                                    <button type="button" class="emojiButton" value="✅">✅</button>
+                                    <button type="button" class="emojiButton" value="🟥❌">🟥❌</button>
+                                </div>
+                            </div>
+                            <div style="text-align: center; margin-top: 10px;">
+                                <!-- Send and Reset Buttons -->
+                                <button type="submit">Send Message</button>
+                                <button type="reset">Reset</button>
+                            </div>
+                        </form>
+                        <div id="submissionMessage" style="display: none; padding: 10px; margin-top: 20px; border: 1px solid #ccc; border-radius: 5px;">
+                            <p id="submissionText" style="font-size: 16px;"></p>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </section>
+    </main>
+
+    <script>
+        // JavaScript for form submission
+        const contactForm = document.getElementById('contactForm');
+        const submissionMessage = document.getElementById('submissionMessage');
+        const submissionText = document.getElementById('submissionText');
+        const emojiPickerButton = document.getElementById('emojiPickerButton');
+        const emojiMenu = document.getElementById('emojiMenu');
+        const emojiButtons = document.querySelectorAll('.emojiButton');
+        const messageField = document.getElementById('message');
+
+        // Toggle emoji menu visibility
+        emojiPickerButton.addEventListener('click', () => {
+            emojiMenu.style.display = emojiMenu.style.display === 'none' ? 'block' : 'none';
+        });
+
+        // Add emoji to the message and update the button when clicked
+        emojiButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const emoji = button.value;
+                messageField.value += ` ${emoji}`;
+                emojiPickerButton.innerHTML = emoji; // Update the button to show the selected emoji
+                emojiMenu.style.display = 'none'; // Hide menu after selection
+            });
+        });
+
+        // Close the emoji menu if clicked outside
+        document.addEventListener('click', (e) => {
+            if (!emojiMenu.contains(e.target) && e.target !== emojiPickerButton) {
+                emojiMenu.style.display = 'none';
+            }
+        });
+
+        // Handle form submission
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // Prevent form from submitting normally
+            const name = document.getElementById('name').value;
+            const message = document.getElementById('message').value;
+            submissionText.innerHTML = `<strong style="color: green;">❤️ Thank you, ${name}!</strong> <span style="color: gray;">Your message has been sent successfully:</span> <br> <em>${message}</em>`;
+            submissionMessage.style.display = 'block';
+            contactForm.reset(); // Reset the form
+        });
+    </script>
+</body>
+</html>

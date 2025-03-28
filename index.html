@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"="width=device-width, initial-scale=1.0">
+    <title>CodeLinx Systems - Home</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <img src="images/logo.jpeg" alt="CodeLinx Systems Logo">
+        <h1>Welcome to CodeLinx Systems</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="#services">Services</a>
+            <a href="contact.html">Contact</a>
+            <a href="feedback.html">Feedback</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="faq.html">FAQ</a>
+            <a href="blog.html">Blog</a>
+            <a href="careers.html">Careers</a>
+            <a href="team.html">Our Team</a>
+        </nav>
+    </header>
+
+    <!-- Image Carousel Section -->
+    <section id="carousel" class="carousel">
+        <div class="carousel-container">
+            <img src="images/image1.jpeg" alt="Image 1" class="carousel-image">
+            <img src="images/image2.jpeg" alt="Image 2" class="carousel-image">
+            <img src="images/image3.jpeg" alt="Image 3" class="carousel-image">
+            <img src="images/image4.jpeg" alt="Image 4" class="carousel-image">
+            <img src="images/image5.jpeg" alt="Image 5" class="carousel-image">
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Section 1 -->
+        <section id="section1">
+            <h2>Your IT Solutions Partner</h2>
+            <p>At CodeLinx Systems, we provide innovative IT solutions tailored to your business needs. Our team of experts is dedicated to delivering high-quality services that drive success.</p>
+        </section>
+
+        <!-- Section 2: Mission -->
+        <section id="section2">
+            <h3>Our Mission</h3>
+            <p class="mission-statement">To empower businesses through technology, ensuring they stay ahead in a rapidly changing digital landscape.</p>
+        </section>
+
+        <!-- Section 3: Image and Text -->
+        <section id="section3" class="image-text-section">
+            <img src="images/Designer.jpeg" alt="Designer Image" class="image-text" width="200" height="200">
+            <div class="text-content">
+                <p>Our team of designers is dedicated to creating visually appealing and user-friendly interfaces.</p>
+                <p>We believe that good design is essential for a great user experience, and we strive to achieve that in every project we undertake.</p>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services">
+            <h2>Our Services</h2>
+            <div class="services">
+                <div class="service">
+                    <h3>Custom Software Development</h3>
+                    <p>Tailored software solutions that fit your unique business needs.</p>
+                </div>
+                <div class="service">
+                    <h3>Web Development</h3>
+                    <p>Build modern, responsive, and interactive websites.</p>
+                </div>
+                <div class="service">
+                    <h3>Mobile App Development</h3>
+                    <p>Develop mobile applications for iOS and Android platforms.</p>
+                </div>
+                <div class="service">
+                    <h3>Database Solutions</h3>
+                    <p>Design, implement, and manage robust database systems for your business.</p>
+                </div>
+                <div class="service">
+                    <h3>Cloud Computing</h3>
+                    <p>Leverage the power of the cloud to enhance scalability and efficiency.</p>
+                </div>
+                <div class="service">
+                    <h3>Data Flow Communication</h3>
+                    <p>Streamline data communication processes for seamless business operations.</p>
+                </div>
+                <div class="service">
+                    <h3>Multimedia Services</h3>
+                    <p>Deliver engaging multimedia solutions for your business needs.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 CodeLinx Systems. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // JavaScript for sticky header and smooth scrolling
+        const links = document.querySelectorAll('nav a');
+        links.forEach(link => {
+            link.addEventListener('click', (event) => {
+                const href = link.getAttribute('href');
+                if (href.startsWith('#')) {
+                    // Smooth scrolling for internal links
+                    event.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+                // Allow default behavior for external links (e.g., about.html)
+            });
+        });
+
+        // JavaScript for image carousel
+        const carouselContainer = document.querySelector('.carousel-container');
+        const images = document.querySelectorAll('.carousel-image');
+        let currentIndex = 0;
+
+        function showNextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            const offset = -currentIndex * 100;
+            carouselContainer.style.transform = `translateX(${offset}%)`;
+        }
+
+        // Change image every 3 seconds
+        setInterval(showNextImage, 3000);
+    </script>
+</body>
+</html>
