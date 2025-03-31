@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - CodeLinx Systems</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div>
+                <img src="images/logo4.jpg" alt="CodeLinx Systems Logo">
+                <span>CodeLinx Systems</span>
+            </div>
+            <div>
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="index.html#services">Services</a>
+                <a href="contact.html">Contact</a>
+                <a href="feedback.html">Feedback</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="faq.html">FAQ</a>
+                <a href="blog.html">Blog</a>
+                <a href="careers.html">Careers</a>
+                <a href="team.html">Our Team</a>
+                <a href="login.html">Login / Sign Up</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section id="blog-intro">
+            <h2>Welcome to Our Blog</h2>
+            <p>Stay updated with the latest news, insights, and stories from CodeLinx Systems.</p>
+        </section>
+
+        <section id="blog-posts">
+            <article class="blog-post">
+                <h3>Embracing Cloud Computing</h3>
+                <img src="images/embracingcloudcomputing.jpg" alt="Cloud Computing" class="blog-image">
+                <p class="post-date">Published on: January 15, 2025</p>
+                <p>Discover how cloud computing is transforming businesses and enabling scalability like never before.</p>
+                <a href="#" class="read-more" data-id="post1">Read More</a>
+                <div class="extra-content" id="post1" style="display: none;">
+                    <p>Cloud computing offers unparalleled flexibility, cost savings, and efficiency. Learn about the latest tools and platforms driving this transformation.</p>
+                </div>
+            </article>
+            <article class="blog-post">
+                <h3>AI in Everyday Business</h3>
+                <img src="images/ai-immersive-bussiness.jpg" alt="AI in Business" class="blog-image">
+                <p class="post-date">Published on: March 5, 2025</p>
+                <p>Learn how artificial intelligence is revolutionizing business operations across industries.</p>
+                <a href="#" class="read-more" data-id="post3">Read More</a>
+                <div class="extra-content" id="post3" style="display: none;">
+                    <p>AI is enabling smarter decision-making, automation, and personalized customer experiences. Dive into its real-world applications.</p>
+                </div>
+            </article>
+            <article class="blog-post">
+                <h3>Advancements in Network and Data Center Technologies</h3>
+                <img src="images/datacenter.jpg" alt="Network and Data Center" class="blog-image">
+                <p class="post-date">Published on: March 25, 2025</p>
+                <p>Explore how cutting-edge technologies are reshaping networks and data centers for the future.</p>
+                <a href="#" class="read-more" data-id="post4">Read More</a>
+                <div class="extra-content" id="post4" style="display: none;">
+                    <p>From software-defined networking (SDN) to edge computing, discover the innovations driving efficiency, scalability, and security in modern data centers. Learn how these advancements are enabling faster data processing and seamless connectivity across the globe.</p>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 CodeLinx Systems. All rights reserved.</p>
+        <div>
+            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </footer>
+
+    <!-- Add this script before the closing </body> tag -->
+    <script>
+        document.querySelectorAll('.read-more').forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                const postId = this.getAttribute('data-id');
+                const extraContent = document.getElementById(postId);
+                if (extraContent.style.display === 'none') {
+                    extraContent.style.display = 'block';
+                    this.textContent = 'Read Less';
+                } else {
+                    extraContent.style.display = 'none';
+                    this.textContent = 'Read More';
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -1,46 +1,76 @@
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
     color: #333;
+    font-size: 16px; /* Default styles for larger screens */
 }
 
 header {
-    background-color: #2c3e50;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #2c3e50; /* Updated to #2c3e50 */
     color: white;
-    padding: 20px 0;
-    text-align: center;
+    padding: 10px 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 header img {
-    height: 80px; /* Matches the size in index and about pages */
     display: block;
     margin: 0 auto;
+    max-width: 120px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+header img:hover {
+    transform: scale(1.1);
 }
 
 header h1 {
-    font-size: 36px;
-    margin: 10px 0 0 0; /* Adds spacing below the logo */
+    font-size: 18px; /* Reduced from 20px */
+    margin: 3px 0 0 0; /* Adjusted spacing */
 }
 
 nav {
     display: flex;
-    justify-content: center;
-    margin-top: 10px;
+    justify-content: space-between;
+    align-items: center;
 }
 
 nav a {
-    text-decoration: none;
     color: white;
-    margin: 0 15px;
-    font-size: 18px;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
     transition: color 0.3s;
 }
 
 nav a:hover {
     color: #1abc9c;
+}
+
+nav .right {
+    margin-left: auto;
+}
+
+.swiper {
+    width: 100%;
+    height: 350px; /* Slightly increased height for a wider appearance */
+    margin-top: 20px; /* Adds space between the header and the carousel */
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: contain; /* Ensure the entire image is visible */
+    background-position: center;
+    background-repeat: no-repeat; /* Prevent image repetition */
 }
 
 main {
@@ -88,31 +118,25 @@ main {
     text-align: left;
 }
 
+/* Services Section */
 .services {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-/* Center service cards */
-#services .services {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(200px, 1fr)); /* 3 items per row with a minimum width */
+    gap: 20px; /* Space between items */
+    padding: 0 40px; /* Add space on both edges */
 }
 
 .service {
-    background-color: white;
-    margin: 15px;
-    padding: 30px;
+    background: white;
+    padding: 15px; /* Slightly smaller padding for items */
     border-radius: 10px;
-    width: 250px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .service:hover {
     transform: translateY(-10px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
 .service h3 {
@@ -125,7 +149,7 @@ main {
 }
 
 footer {
-    background-color: #2c3e50;
+    background: #2c3e50; /* Updated to #2c3e50 */
     color: white;
     text-align: center;
     padding: 20px 0;
@@ -133,6 +157,20 @@ footer {
 
 footer p {
     margin: 0;
+}
+
+footer div {
+    margin-top: 10px; /* Add space between text and icons */
+}
+
+footer a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #1abc9c;
 }
 
 /* Core Values Section */
@@ -224,25 +262,28 @@ main .heading-our-journey {
     max-width: 800px; /* Set a maximum width for the carousel */
     margin: 20px auto; /* Center the carousel horizontally with some margin */
     overflow: hidden;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for better visibility */
+    border: none; /* Remove the border */
+    border-radius: 0; /* Remove rounded corners */
+    box-shadow: none; /* Remove shadow if present */
 }
 
 .carousel-container {
     display: flex;
+    justify-content: center;
+    align-items: center;
     overflow: hidden;
-    width: 100%; /* Ensure the carousel fits the layout */
-    height: 300px; /* Set a fixed height for the carousel */
-    position: relative;
+    width: 100%; /* Full width of the container */
+    height: auto; /* Adjust height as needed */
+    padding: 20px; /* Add some padding for spacing */
+    background-color: transparent; /* Remove the white background */
 }
 
 .carousel-image {
-    flex-shrink: 0;
-    width: 100%; /* Make each image take up the full width of the container */
-    height: 100%; /* Ensure the image fits the container height */
-    object-fit: cover; /* Scale the image while maintaining aspect ratio */
-    transition: transform 0.5s ease-in-out;
+    max-width: 60%; /* Limit the width to 60% of the container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Optional: Add rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+    object-fit: contain; /* Ensure the image fits nicely */
 }
 
 /* Feedback Form Styles */
@@ -280,12 +321,18 @@ star-rating {
     cursor: pointer;
 }
 
-.star {
+star {
     font-size: 1.5rem;
     color: #ccc;
 }
 
-star.selected,
+.star {
+    font-size: 24px;
+    color: gray;
+    cursor: pointer;
+}
+
+.star.selected,
 .star.highlighted {
     color: gold;
 }
@@ -305,6 +352,64 @@ button:hover {
 }
 
 /* Form Container Styles */
+.form-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px; /* Ensures space inside the container */
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.form-container form {
+    display: flex;
+    flex-direction: column;
+    padding-right: 10px; /* Adds extra padding on the right */
+}
+
+.form-container label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-container input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-container button {
+    padding: 10px;
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.form-container button:hover {
+    background-color: #1abc9c;
+}
+
+.toggle-link {
+    text-align: center;
+    margin-top: 10px;
+    color: #3498db;
+    cursor: pointer;
+}
+
+.toggle-link:hover {
+    text-decoration: underline;
+}
+
 .form-container {
     max-width: 500px;
     margin: 0 auto;
@@ -355,11 +460,78 @@ button:hover {
 
 /* Center the contact form at the top */
 #contact-form {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start; /* Aligns the form to the top */
-    min-height: 80vh; /* Ensures the form takes up most of the viewport height */
-    padding-top: 20px; /* Adds spacing from the top */
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    margin: 20px auto;
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+}
+
+.modal-content {
+    background-color: #f9f9f9; /* Light gray background */
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 50%;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: 2px solid #1c5d87; /* Green border */
+}
+
+.modal-content h2 {
+    color: #1c5d87; /* Green text for the heading */
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.modal-content p {
+    font-size: 1.2em;
+    color: #333; /* Dark gray text */
+}
+
+.close-modal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+    color: #000;
+    text-decoration: none;
+}
+
+/* Emoji Picker Styles */
+#emojiMenu {
+    display: none;
+    position: absolute;
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Ensure it appears above other elements */
+}
+
+#emojiMenu.active {
+    display: block;
 }
 
 /* Add styles for the team layout */
@@ -406,7 +578,7 @@ button:hover {
 /* FAQ Intro Section */
 #faq-intro h2 {
     text-align: center;
-    color: #2a9df4; /* A nice blue color */
+    color: #1197ae; /* A nice blue color */
     font-size: 1.5em; /* Reduced font size */
     margin-top: 20px;
 }
@@ -419,7 +591,7 @@ button:hover {
 
 #faq-list .faq-item h3 {
     font-size: 1.1em; /* Slightly smaller font size */
-    color: #1491bf; /* A greenish color */
+    color: #117ca2; /* A greenish color */
     margin-bottom: 10px; /* Add some spacing below the question */
 }
 
@@ -449,11 +621,253 @@ button:hover {
 
 .faq-question {
     font-weight: bold;
-    color: #1abc9c; /* Greenish color for questions */
+    color: #1197ae; /* Greenish color for questions */
     width: 30%; /* Adjust width for better layout */
+    cursor: pointer;
+    margin: 10px 0;
 }
 
 .faq-answer {
     color: #333; /* Neutral color for answers */
     width: 70%;
+    display: none;
+    margin: 5px 0 15px 0;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Styles for Open Positions Section */
+#open-positions {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#open-positions h3 {
+    text-align: center;
+    color: #333;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+.job-listing {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.job-listing:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.job-listing h4 {
+    color: #056298;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.job-listing p {
+    color: #555;
+    margin: 5px 0;
+}
+
+.job-listing button {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #056298;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+.job-listing button:hover {
+    background-color: #005bb5;
+}
+
+/* Style for the "Read More" buttons */
+.read-more {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #096d89; /* Blue color */
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.read-more:hover {
+    background-color: #067499; /* Darker blue on hover */
+}
+
+/* Style for blog post images */
+.blog-image {
+    width: 100%; /* Make the image responsive */
+    max-width: 300px; /* Limit the maximum width */
+    height: auto; /* Maintain aspect ratio */
+    margin: 10px 0; /* Add spacing around the image */
+    border-radius: 8px; /* Optional: Add rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+}
+
+/* Blog Posts Section */
+#blog-posts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Adjust spacing between posts */
+    justify-content: space-between; /* Distribute posts evenly */
+}
+
+.blog-post {
+    flex: 1 1 calc(33.333% - 20px); /* Adjust width for three posts per row */
+    box-sizing: border-box;
+    border: 1px solid #ddd; /* Optional: Add a border for better visibility */
+    padding: 10px;
+    background-color: #f9f9f9; /* Optional: Add a background color */
+}
+
+.blog-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.read-more {
+    display: inline-block;
+    margin-top: 10px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.read-more:hover {
+    text-decoration: underline;
+}
+
+/* Logo Styles */
+.logo {
+    display: block;
+    margin: 0 auto;
+    max-width: 120px; /* Reduced size for a smaller logo */
+    height: auto;
+    border-radius: 10px; /* Optional: adds rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+    transition: transform 0.3s ease; /* Adds a hover effect */
+}
+
+.logo:hover {
+    transform: scale(1.1); /* Slightly enlarges the logo on hover */
+}
+
+/* Social Icons Styles */
+.social-icons {
+    margin-top: 10px;
+}
+
+.social-icon {
+    margin: 0 10px;
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #1abc9c; /* Change to your desired hover color */
+}
+
+/* Styles for tablets */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .services {
+        grid-template-columns: repeat(2, minmax(200px, 1fr)); /* 2 items per row */
+        padding: 0 20px; /* Reduce padding on smaller screens */
+    }
+}
+
+/* Styles for mobile devices */
+@media (max-width: 480px) {
+    body {
+        font-size: 12px;
+    }
+
+    .services {
+        grid-template-columns: 1fr; /* 1 item per row */
+        padding: 0 10px; /* Minimal padding for mobile */
+    }
+}
+
+/* Container and Item Styles */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.item {
+    flex: 1 1 calc(33.333% - 20px); /* Adjust for three items per row */
+    margin: 10px;
+}
+
+@media (max-width: 768px) {
+    .item {
+        flex: 1 1 calc(50% - 20px); /* Two items per row */
+    }
+}
+
+@media (max-width: 480px) {
+    .item {
+        flex: 1 1 100%; /* One item per row */
+    }
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Main Header Styles */
+.main-header {
+    background-color: #f8f9fa;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #ddd;
+}
+
+.main-header img {
+    height: 50px;
+}
+
+.main-header nav div a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+}
+
+.main-header nav div a:hover {
+    color: #007bff;
 }

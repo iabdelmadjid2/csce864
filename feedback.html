@@ -5,23 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feedback - CodeLinx Systems</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
+
     <!-- Header -->
     <header>
-        <img src="images/logo.jpeg" alt="CodeLinx Systems Logo">
-        <h1>Feedback</h1>
         <nav>
-            <a href="index.html">Home</a>
-            <a href="about.html">About Us</a>
-            <a href="index.html#services">Services</a> <!-- Updated link -->
-            <a href="contact.html">Contact</a>
-            <a href="feedback.html">Feedback</a>
-            <a href="gallery.html">Gallery</a>
-            <a href="faq.html">FAQ</a>
-            <a href="blog.html">Blog</a>
-            <a href="careers.html">Careers</a>
-            <a href="team.html">Our Team</a>
+            <div>
+                <img src="images/logo4.jpg" alt="CodeLinx Systems Logo">
+                <span>CodeLinx Systems</span>
+            </div>
+            <div>
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="index.html#services">Services</a>
+                <a href="contact.html">Contact</a>
+                <a href="feedback.html">Feedback</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="faq.html">FAQ</a>
+                <a href="blog.html">Blog</a>
+                <a href="careers.html">Careers</a>
+                <a href="team.html">Our Team</a>
+                <a href="login.html">Login / Sign Up</a>
+            </div>
         </nav>
     </header>
 
@@ -68,11 +75,38 @@
         </section>
     </main>
 
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 CodeLinx Systems. All rights reserved.</p>
+        <div>
+            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </footer>
+
     <script>
         // JavaScript for star rating
         const stars = document.querySelectorAll('.star');
         const ratingInput = document.getElementById('rating');
+
         stars.forEach((star, index) => {
+            // Highlight stars on hover
+            star.addEventListener('mouseover', () => {
+                stars.forEach((s, i) => {
+                    s.classList.toggle('highlighted', i <= index);
+                });
+            });
+
+            // Remove highlight when mouse leaves
+            star.addEventListener('mouseout', () => {
+                stars.forEach((s, i) => {
+                    s.classList.toggle('highlighted', i < ratingInput.value);
+                });
+            });
+
+            // Set rating on click
             star.addEventListener('click', () => {
                 stars.forEach((s, i) => {
                     s.classList.toggle('highlighted', i <= index);
@@ -84,9 +118,19 @@
         // JavaScript for emoji picker
         const emojiPickerButton = document.getElementById('emojiPickerButton');
         const messageInput = document.getElementById('message');
+        let emojiDropdown; // Keep a reference to the dropdown
+
         emojiPickerButton.addEventListener('click', () => {
+            if (emojiDropdown) {
+                // If the dropdown already exists, remove it (toggle off)
+                document.body.removeChild(emojiDropdown);
+                emojiDropdown = null;
+                return;
+            }
+
+            // Create the dropdown if it doesn't exist
             const emojiList = ['😊', '😢', '😂', '😡', '👍', '👎', '❤️', '🎉'];
-            const emojiDropdown = document.createElement('div');
+            emojiDropdown = document.createElement('div');
             emojiDropdown.style.position = 'absolute';
             emojiDropdown.style.border = '1px solid #ccc';
             emojiDropdown.style.background = '#fff';
@@ -106,6 +150,7 @@
                 emojiButton.addEventListener('click', () => {
                     messageInput.value += emoji;
                     document.body.removeChild(emojiDropdown);
+                    emojiDropdown = null; // Reset the reference
                 });
                 emojiDropdown.appendChild(emojiButton);
             });

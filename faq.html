@@ -5,24 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAQ - CodeLinx Systems</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
 
     <!-- Header -->
     <header>
-        <img src="images/logo.jpeg" alt="CodeLinx Systems Logo">
-        <h1>Frequently Asked Questions</h1>
         <nav>
-            <a href="index.html">Home</a>
-            <a href="about.html">About Us</a>
-            <a href="index.html#services">Services</a>
-            <a href="contact.html">Contact</a>
-            <a href="feedback.html">Feedback</a>
-            <a href="gallery.html">Gallery</a>
-            <a href="faq.html">FAQ</a>
-            <a href="blog.html">Blog</a>
-            <a href="careers.html">Careers</a>
-            <a href="team.html">Our Team</a>
+            <div>
+                <img src="images/logo4.jpg" alt="CodeLinx Systems Logo">
+                <span>CodeLinx Systems</span>
+            </div>
+            <div>
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="index.html#services">Services</a>
+                <a href="contact.html">Contact</a>
+                <a href="feedback.html">Feedback</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="faq.html">FAQ</a>
+                <a href="blog.html">Blog</a>
+                <a href="careers.html">Careers</a>
+                <a href="team.html">Our Team</a>
+                <a href="login.html">Login / Sign Up</a>
+            </div>
         </nav>
     </header>
 
@@ -34,31 +40,81 @@
         </section>
 
         <section id="faq-list">
-            <table class="faq-table">
-                <tr>
-                    <td class="faq-question">What services does CodeLinx Systems offer?</td>
-                    <td class="faq-answer">We provide a wide range of services including software development, web design, and IT consulting.</td>
-                </tr>
-                <tr>
-                    <td class="faq-question">How can I contact your team?</td>
-                    <td class="faq-answer">You can reach us through our <a href="contact.html">Contact</a> page or email us directly at support@codelinx.com.</td>
-                </tr>
-                <tr>
-                    <td class="faq-question">Where is CodeLinx Systems located?</td>
-                    <td class="faq-answer">We are headquartered in New York City, but we serve clients globally.</td>
-                </tr>
-                <tr>
-                    <td class="faq-question">Do you offer custom software solutions?</td>
-                    <td class="faq-answer">Yes, we specialize in creating custom software tailored to meet the unique needs of our clients.</td>
-                </tr>
-            </table>
+            <div class="faq-item">
+                <div class="faq-question">What services does CodeLinx Systems offer?</div>
+                <div class="faq-answer">We provide a wide range of services including software development, web design, and IT consulting.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How can I contact your team?</div>
+                <div class="faq-answer">You can reach us through our <a href="contact.html">Contact</a> page or email us directly at support@codelinx.com.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Where is CodeLinx Systems located?</div>
+                <div class="faq-answer">We are headquartered in New York City, but we serve clients globally.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Do you offer custom software solutions?</div>
+                <div class="faq-answer">Yes, we specialize in creating custom software tailored to meet the unique needs of our clients.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What industries do you serve?</div>
+                <div class="faq-answer">We serve a variety of industries including healthcare, finance, education, retail, and more.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Do you provide ongoing support after project completion?</div>
+                <div class="faq-answer">Yes, we offer maintenance and support services to ensure your systems run smoothly after deployment.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How long does it take to complete a project?</div>
+                <div class="faq-answer">The timeline depends on the complexity and scope of the project. We work closely with clients to set realistic deadlines.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Can I request a demo of your services?</div>
+                <div class="faq-answer">Absolutely! Contact us to schedule a demo and learn more about how we can help your business.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What is your pricing model?</div>
+                <div class="faq-answer">Our pricing depends on the project scope and requirements. Contact us for a detailed quote.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Do you offer training for your solutions?</div>
+                <div class="faq-answer">Yes, we provide training sessions to help your team effectively use our solutions.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Can you integrate with third-party tools?</div>
+                <div class="faq-answer">Yes, we can integrate with various third-party tools to enhance your system's functionality.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Do you work with startups?</div>
+                <div class="faq-answer">Yes, we love working with startups and helping them bring their ideas to life.</div>
+            </div>
         </section>
     </main>
 
     <!-- Footer -->
     <footer>
         <p>&copy; 2025 CodeLinx Systems. All rights reserved.</p>
+        <div>
+            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
     </footer>
+
+    <script>
+        // JavaScript to make FAQ collapsible
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                if (answer.style.display === 'block') {
+                    answer.style.display = 'none';
+                } else {
+                    answer.style.display = 'block';
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
